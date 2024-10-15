@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    render json: @users
+    render json: @users, status: :ok
   end
 
   def create
@@ -16,13 +16,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render json: @user
+    render json: @user, status: :ok
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      render json: @user
+      render json: @user, status: :ok
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    head :no_content
+    render json: { error: "User deleted successfully" }, status: :ok
   end
 
   private

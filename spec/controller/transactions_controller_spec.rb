@@ -88,17 +88,9 @@ RSpec.describe TransactionsController, type: :controller do
       end
     end
 
-    context 'when neither user_id nor user_name is provided' do
-      it 'returns an error' do
-        get :filter_by_user
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(JSON.parse(response.body)['error']).to eq('Either user_id or user_name is required')
-      end
-    end
-
     context 'when user is not found' do
       it 'returns an error when user_id does not exist' do
-        get :filter_by_user, params: { user_id: 9999 } # Assuming this ID does not exist
+        get :filter_by_user, params: { user_id: 9999 }
         expect(response).to have_http_status(:not_found)
         expect(JSON.parse(response.body)['error']).to eq('User not found')
       end

@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
 
   def index
     @teams = Team.all
-    render json: @teams
+    render json: @teams, status: :ok
   end
 
   def create
@@ -23,7 +23,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    render json: @team
+    render json: @team, status: :ok
   end
 
   def update
@@ -36,7 +36,7 @@ class TeamsController < ApplicationController
 
   def destroy
     @team.destroy
-    head :no_content
+    render json: { error: "Team deleted successfully" }, status: :ok
   end
 
   def team_users

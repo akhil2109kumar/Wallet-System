@@ -2,7 +2,7 @@ class WalletsController < ApplicationController
   before_action :set_walletable,  except: :transfer
 
   def show
-    render json: { wallet: @wallet }
+    render json: { wallet: @wallet }, status: :ok
   end
 
   def credit

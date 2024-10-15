@@ -2,7 +2,7 @@ class StocksController < ApplicationController
   before_action :set_stock, only: [ :show, :update, :destroy ]
 
   def show
-    render json: @stock
+    render json: @stock, status: :ok
   end
 
   def create
@@ -26,12 +26,12 @@ class StocksController < ApplicationController
 
   def destroy
     @stock.destroy
-    head :no_content
+    render json: { error: "stock deleted successfully" }, status: :ok
   end
 
   def prices
     stocks = Stock.select(:id, :name, :price)
-    render json: stocks
+    render json: stocks, status: :ok
   end
 
   def find_stock
