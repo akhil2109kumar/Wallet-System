@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stock: one
+  owner: one
+  owner_type: Owner
+  quantity: 1
+  purchase_price: 9.99
+
+two:
+  stock: two
+  owner: two
+  owner_type: Owner
+  quantity: 1
+  purchase_price: 9.99
